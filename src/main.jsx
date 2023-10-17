@@ -7,11 +7,30 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-
+import Root from './components/Root/Root.jsx';
+import ErrorPage from './pageLayOut/Error page/ErrorPage.jsx';
+import Home from './pageLayOut/Home/Home.jsx';
+import Login from './pageLayOut/Login/Login.jsx';
+import Register from './pageLayOut/Register/Register.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App></App>
+    element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
+    children:[
+      {
+        path:"/",
+        element:<Home></Home>,
+      },
+      {
+        path:"/login",
+        element:<Login></Login>
+      },
+      {
+        path:"/register",
+        element:<Register></Register>
+      },
+    ]
   },
 ]);
 
