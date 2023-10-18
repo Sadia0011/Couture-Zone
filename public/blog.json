@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "name": "Latest Trends in Winter Fashion",
+      "img":"https://i.ibb.co/dDgCcQh/ADIDAS-2.jpg",
+      "desc": "Discover the hottest winter fashion trends this season. From cozy sweaters to stylish boots, stay on top of the latest fashion trends to keep warm and fashionable."
+    },
+    {
+      "id": 2,
+      "name": "Accessorizing for the Perfect Look",
+      "img":"https://i.ibb.co/SvyttCh/hm-p-3.jpg",
+      "desc": "Learn the art of accessorizing to elevate your outfit. Find tips on choosing the right jewelry, handbags, and shoes to complete your stylish ensemble."
+    },
+    {
+      "id": 3,
+      "name": "Guide to Sustainable Fashion Choices",
+      "img":"https://i.ibb.co/5683Z08/ZARA-3.jpg",
+      "desc": "Explore the world of sustainable fashion and how you can make eco-friendly choices when it comes to your clothing and accessories. Learn about ethical brands and eco-conscious materials."
+    },
+    {
+      "id": 4,
+      "name": "Summer Fashion Essentials for Every Wardrobe",
+      "img":"https://i.ibb.co/dDgCcQh/ADIDAS-2.jpg",
+      "desc": "Get ready for the summer season with must-have fashion essentials. From breezy dresses to stylish sunglasses, make sure your wardrobe is equipped for the sunny days and warm nights."
+    }
+  ]
+  

@@ -3,14 +3,14 @@ import { SiZara, SiNike } from "react-icons/si";
 import { SiAdidas } from "react-icons/si";
 const Banner = () => {
   return (
-    <div className="hero  bg-slate-200 rounded-lg">
-      <div className="flex justify-center items-center flex-col lg:flex-row-reverse">
+    <div className="hero  bg-slate-200 lg:rounded-lg">
+      <div className="flex flex-col justify-center items-center  lg:flex-row-reverse">
         <img
           src="https://i.ibb.co/yQWqRLB/GUCCI-1.jpg"
-          className="w-2/6 rounded-lg "
+          className="lg: w-2/6 rounded-lg "
         />
-        <div className="p-10 text-center">
-          <h1 className="text-4xl font-bold text-center">
+        <div className="lg:p-10 text-center">
+          <h1 className="text-lg lg:text-4xl font-bold text-center">
             Elevate Your Style,
             <br />
             <span className="text-blue-800">Embrace Your Confidence.</span>
@@ -21,7 +21,7 @@ const Banner = () => {
             Experience the art of fashion through our premium quality and
             trendsetting designs.
           </p>
-          <div className="flex justify-center items-center gap-7 text-blue-800  ">
+          <div className="hidden  lg:flex justify-center items-center gap-7 text-blue-800  ">
             <SiZara className="text-4xl"></SiZara>
             <SiNike className="text-4xl"></SiNike>
             <SiAdidas className="text-4xl"></SiAdidas>
