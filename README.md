@@ -1,5 +1,5 @@
 <h3>Projects Details</h3>
--This website is about Purchasing accesories
+-This website is about Purchasing accesories.
 -user can login and register.
 -user can choose products from different product and add it to user's cart.
 -user can also add a product.
@@ -7,7 +7,8 @@
 -user can delete the product from the cart.
 
 
-#Website Live Link
+<h2>Website Live Link</h2>
+Website Live Link
 
 
 
