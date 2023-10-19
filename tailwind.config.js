@@ -4,13 +4,13 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
-      fontFamily:{
+      fontFamily: {
         font: 'Merriweather'
       }
     },
   },
   plugins: [require("daisyui")],
 }
-
