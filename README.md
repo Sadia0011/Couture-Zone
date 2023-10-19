@@ -1,8 +1,15 @@
-# React + Vite
+<h3>Projects Details</h3>
+-This website is about Purchasing accesories
+-user can login and register.
+-user can choose products from different product and add it to user's cart.
+-user can also add a product.
+-user can update the product as well.
+-user can delete the product from the cart.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+#Website Live Link
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+
+
