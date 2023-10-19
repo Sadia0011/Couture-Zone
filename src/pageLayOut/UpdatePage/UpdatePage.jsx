@@ -1,9 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const AddProduct = () => {
-  const handleAddProduct = (e) => {
+const UpdatePage = () => {
+  const loadedData = useLoaderData();
+  console.log(loadedData);
+
+  const handleUpdateProduct = (e) => {
     e.preventDefault();
     const form = e.target;
     const photo = form.photo.value;
@@ -13,7 +16,7 @@ const AddProduct = () => {
     const price = form.price.value;
     const description = form.description.value;
     const rating = form.rating.value;
-    const newProduct = {
+    const updateProduct = {
       photo,
       name,
       brand,
@@ -22,34 +25,46 @@ const AddProduct = () => {
       description,
       rating,
     };
-    console.log(newProduct);
-    fetch("http://localhost:5000/products", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newProduct),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if ((data.insertedId = 1)) {
-          Swal.fire({
-            icon: "success",
-            title: "added Product successfully",
-            text: "Congratulations!",
-            confirmButtonText: "Cool",
+    console.log(updateProduct);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, update it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/productsById/${loadedData._id}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(updateProduct),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if ((data.modifiedId = 1)) {
+              Swal.fire({
+                icon: "success",
+                title: "updated Product successfully",
+                text: "Congratulations!",
+                confirmButtonText: "Cool",
+              });
+            }
           });
-        }
-      });
+      }
+    });
   };
   return (
     <div className="mb-10">
       <h2 className="text-5xl text-blue-800 font-semibold text-center mt-5 mb-7">
-        Add a Product
+        Update a Product
       </h2>
       <div className="bg-slate-100 p-5 rounded-2xl">
-        <form onSubmit={handleAddProduct}>
+        <form onSubmit={handleUpdateProduct}>
           {/* row 1 */}
           <div className="md:flex mb-6">
             <div className="form-control w-1/2">
@@ -61,6 +76,7 @@ const AddProduct = () => {
               <label className="input-group">
                 <input
                   type="text"
+                  defaultValue={loadedData.photo}
                   placeholder="Photo URL"
                   name="photo"
                   className="input input-bordered w-full mr-4"
@@ -76,10 +92,10 @@ const AddProduct = () => {
               <label className="input-group">
                 <input
                   type="text"
+                  defaultValue={loadedData.name}
                   placeholder="Name"
                   name="name"
                   className="input input-bordered w-full"
-                  required
                 />
               </label>
             </div>
@@ -97,7 +113,6 @@ const AddProduct = () => {
                   name="brand"
                   id=""
                   className="select select-bordered w-full"
-                  required
                 >
                   <option value={"Adidas"}>Adidas</option>
                   <option value={"Gucci"}>Gucci</option>
@@ -117,6 +132,7 @@ const AddProduct = () => {
               <label className="input-group">
                 <input
                   type="text"
+                  defaultValue={loadedData.type}
                   placeholder="Type"
                   name="type"
                   className="input input-bordered w-full"
@@ -135,10 +151,10 @@ const AddProduct = () => {
               <label className="input-group">
                 <input
                   type="text"
+                  defaultValue={loadedData.price}
                   placeholder="Price"
                   name="price"
                   className="input input-bordered w-full mr-4"
-                  required
                 />
               </label>
             </div>
@@ -151,10 +167,10 @@ const AddProduct = () => {
               <label className="input-group">
                 <input
                   type="text"
+                  defaultValue={loadedData.rating}
                   placeholder="Rating"
                   name="rating"
                   className="input input-bordered w-full"
-                  required
                 />
               </label>
             </div>
@@ -170,6 +186,7 @@ const AddProduct = () => {
               <label className="input-group">
                 <input
                   type="text"
+                  defaultValue={loadedData.description}
                   placeholder="Short Description"
                   name="description"
                   className="input input-bordered w-full mr-4"
@@ -179,7 +196,7 @@ const AddProduct = () => {
           </div>
 
           <button className="w-full btn btn-accent bg-blue-800 text-white">
-            Add Product
+            Update Product
           </button>
         </form>
       </div>
@@ -187,4 +204,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdatePage;

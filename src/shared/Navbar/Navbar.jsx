@@ -6,39 +6,31 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { CgProfile } from "react-icons/cg";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+
   const navLinks = (
     <>
       <li id="sidebar">
-        <NavLink to={"/"}>
-          <a>Home</a>
-        </NavLink>
+        <NavLink to={"/"}>Home</NavLink>
       </li>
       {user && (
         <li id="sidebar">
-          <NavLink to={"/add"}>
-            <a>Add product</a>
-          </NavLink>
+          <NavLink to={"/add"}>Add product</NavLink>
         </li>
       )}
       {user && (
         <li id="sidebar">
-          <NavLink to={"/cart"}>
-            <a>My cart</a>
-          </NavLink>
+          <NavLink to={"/cart"}>My cart</NavLink>
         </li>
       )}
       <li id="sidebar">
-        <NavLink to={"/about"}>
-          <a>About</a>
-        </NavLink>
+        <NavLink to={"/about"}>About</NavLink>
       </li>
       <li id="sidebar">
-        <NavLink to={"/contact"}>
-          <a>Contact</a>
-        </NavLink>
+        <NavLink to={"/contact"}>Contact</NavLink>
       </li>
     </>
   );
+
   const handleLogOut = () => {
     logOut();
   };
@@ -102,6 +94,7 @@ const Navbar = () => {
                 </span>
               </div>
             </label>
+
             <button
               onClick={handleLogOut}
               className="btn btn-small bg-blue-800 text-white"

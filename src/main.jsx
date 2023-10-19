@@ -14,6 +14,10 @@ import MyCart from "./pageLayOut/MyCart/MyCart.jsx";
 import About from "./pageLayOut/About/About.jsx";
 import Contact from "./pageLayOut/Contact/Contact.jsx";
 import AuthProvider from "./AuthProvider/AuthProvider.jsx";
+import BrandDetails from "./pageLayOut/BrandDeatails/BrandDetails.jsx";
+import Details from "./pageLayOut/Details/Details.jsx";
+import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
+import UpdatePage from "./pageLayOut/UpdatePage/UpdatePage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,11 +31,46 @@ const router = createBrowserRouter([
       },
       {
         path: "/add",
-        element: <AddProduct></AddProduct>,
+        element: (
+          <PrivateRoute>
+            <AddProduct></AddProduct>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/cart",
-        element: <MyCart></MyCart>,
+        element: (
+          <PrivateRoute>
+            <MyCart></MyCart>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:5000/cart"),
+      },
+      {
+        path: "/products/:brand",
+        element: <BrandDetails></BrandDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.brand}`),
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/productsById/${params.id}`),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdatePage></UpdatePage>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/productsById/${params.id}`),
       },
       {
         path: "/about",

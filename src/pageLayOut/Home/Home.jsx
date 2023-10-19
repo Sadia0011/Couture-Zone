@@ -13,6 +13,7 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);
+
   return (
     <div>
       <Banner></Banner>
