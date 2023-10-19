@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-const CartCard = ({ cart }) => {
+const CartCard = ({ cart, cartData, setCartData }) => {
   const { _id, brand, name, photo, price } = cart;
   const handleDelete = (_id) => {
     Swal.fire({
@@ -23,6 +23,8 @@ const CartCard = ({ cart }) => {
             console.log(data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              const remaining = cartData.filter((cart) => cart._id != _id);
+              setCartData(remaining);
             }
           });
       }

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaAsymmetrik } from "react-icons/fa";
 import "./Navbar.css";
@@ -6,6 +6,33 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { CgProfile } from "react-icons/cg";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+
+  const [checkBox, setCheckbox] = useState(false);
+  const Storage = window.localStorage;
+  const handleCheck = (event) => {
+    //setCheckbox(document.getElementById("myCheck").checked);
+    setCheckbox(event.target.checked);
+    if (!checkBox) {
+      // Whenever the user explicitly chooses dark mode
+      Storage.theme = "dark";
+    } else if (checkBox) {
+      // Whenever the user explicitly chooses light mode
+      Storage.theme = "light";
+    }
+
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (
+      Storage.theme === "dark" ||
+      (!("theme" in Storage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+    // alert(document.getElementById("myCheck").checked);
+  };
 
   const navLinks = (
     <>
@@ -27,6 +54,19 @@ const Navbar = () => {
       </li>
       <li id="sidebar">
         <NavLink to={"/contact"}>Contact</NavLink>
+      </li>
+
+      <li className=" place-self-center">
+        <div className="flex place-self-center -m-1">
+          <span>Light</span>
+          <input
+            type="checkbox"
+            id="myTheme"
+            onChange={handleCheck}
+            className="toggle"
+          />
+          <span>Dark</span>
+        </div>
       </li>
     </>
   );
