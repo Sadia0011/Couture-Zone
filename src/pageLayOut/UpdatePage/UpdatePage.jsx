@@ -36,13 +36,16 @@ const UpdatePage = () => {
       confirmButtonText: "Yes, update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/productsById/${loadedData._id}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(updateProduct),
-        })
+        fetch(
+          ` https://fashion-and-apparel-server-qryjejk3g-sadias-projects-d13119bc.vercel.app/productsById/${loadedData._id}`,
+          {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(updateProduct),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

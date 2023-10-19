@@ -44,13 +44,18 @@ const router = createBrowserRouter([
             <MyCart></MyCart>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/cart"),
+        loader: () =>
+          fetch(
+            " https://fashion-and-apparel-server-qryjejk3g-sadias-projects-d13119bc.vercel.app/cart"
+          ),
       },
       {
         path: "/products/:brand",
         element: <BrandDetails></BrandDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.brand}`),
+          fetch(
+            ` https://fashion-and-apparel-server-qryjejk3g-sadias-projects-d13119bc.vercel.app/products/${params.brand}`
+          ),
       },
       {
         path: "/details/:id",
@@ -60,7 +65,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/productsById/${params.id}`),
+          fetch(
+            ` https://fashion-and-apparel-server-qryjejk3g-sadias-projects-d13119bc.vercel.app/productsById/${params.id}`
+          ),
       },
       {
         path: "/update/:id",
@@ -70,7 +77,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/productsById/${params.id}`),
+          fetch(
+            ` https://fashion-and-apparel-server-qryjejk3g-sadias-projects-d13119bc.vercel.app/productsById/${params.id}`
+          ),
       },
       {
         path: "/about",

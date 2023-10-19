@@ -22,13 +22,16 @@ const Details = () => {
       confirmButtonText: "Yes, add it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/cart`, {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(details),
-        })
+        fetch(
+          ` https://fashion-and-apparel-server-qryjejk3g-sadias-projects-d13119bc.vercel.app/cart`,
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(details),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
